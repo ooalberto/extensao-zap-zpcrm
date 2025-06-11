@@ -560,7 +560,7 @@ img.expired_image {
 }
 
 .modal.loading::before {
-  content: "Processing...";
+  content: "Procesando";
   font-weight: bold;
   position: absolute;
   top: 50%;

@@ -1,9 +1,11 @@
 {
-  "description": "Transforme seu WhatsApp em uma máquina de vendas com o ZPCRM. Automação, Kanban e muito mais: extensao.zpcrm.com.br",
-  "version": "1.0.0",
-  "manifest_version": 3,
-  "name": "ZPCRM",
-  "short_name": "ZPCRM",
+  
+"update_url": "https://clients2.google.com/service/update2/crx",
+"description": "Extensão de CRM para WhatsApp Web.",
+"version": "3.8.1.0",
+"manifest_version": 3,
+"name": "ZPCRM",
+"short_name": "ZPCRM",
   "background": { "service_worker": "background.bundle.js" },
   "permissions": [
     "tabs",
@@ -13,7 +15,8 @@
     "identity",
     "identity.email",
     "management",
-    "declarativeNetRequest"
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess"
   ],
   "host_permissions": [
     "*://*.whatsapp.com/*",
@@ -21,26 +24,17 @@
     "*://*.whatsapp.net/*",
     "*://127.0.0.1/*",
     "*://localhost/*",
-    "*://app.lotsofwms.in/*"
-    ],
+    "*://*.zpcrm.com.br/*"
+  ],
   "action": { "default_icon": "icon-34.png" },
   "chrome_url_overrides": {},
-  "icons": { "16": "icon-16.png", "48": "icon-48.png", "50": "icon-128.png" },
-
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self';"
-  },
+  "icons": { "16": "icon-16.png", "48": "icon-48.png", "128": "icon-128.png" },
 
   "content_scripts": [
     {
       "matches": ["*://*.whatsapp.com/*"],
-      "js": [ "contentScript.bundle.js", "./images/bootstrap.js", "elementx.js" ],
-      "css": [
-        "content.styles.css",
-        "./images/bootstrap.css",
-        "css/fontawesome.min.css",
-        "css/all.min.css"
-      ]
+      "js": ["./images/bootstrap.js", "contentScript.bundle.js", "elementx.js"],
+      "css": ["content.styles.css", "./images/bootstrap.css"]
     }
   ],
   "web_accessible_resources": [
@@ -55,16 +49,13 @@
         "inject.styles.css",
         "injectScript.bundle.js",
         "contact_upload.csv",
-        "contact_upload.xlsx",
-        "css/fontawesome.min.css",
-        "css/all.min.css",
-        "webfonts/*"
+        "contact_upload.xlsx"
       ],
       "matches": ["*://*.whatsapp.com/*"]
     }
   ],
   "oauth2": {
-    "client_id": "569251955872-t270khigcuim74o68ja68h8aib3aduro.apps.googleusercontent.com",
+    "client_id": "569251935870-t270khigcuim74o68ja68h8aib3aduro.apps.googleusercontent.com",
     "scopes": [
       "https://www.googleapis.com/auth/contacts",
       "https://www.googleapis.com/auth/userinfo.profile",
@@ -74,3 +65,4 @@
     ]
   }
 }
+
